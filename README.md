@@ -12,9 +12,7 @@ a 3 day span.
 
 It all begins with AWS Event Bridge scheduler. Every 24 hours, just after the 00Z
 model output becomes available, AWS Event Bridge launches the "multi-fetch"
-lambda. This lambda simply iterates through the forecast intervals I want.
-ECMWF GRIB files are provided in 3 hour intervals.  The "multi-fetch" lambda calls the
-"start-fetch" lambda, passing in the forcast intervals each time. This in turn launches an
+lambda. This lambda simply iterates through the forecast intervals I want and calls the"start-fetch" lambda, passing in the forcast intervals each time. This in turn launches an
 ECS task. This ECS task downloads the desired ECMWF GRIB file from ECMWF's S3
 bucket, and sends it to my own bucket for later processing. The script running
 on this container launches another ECS task for processing the file once the
