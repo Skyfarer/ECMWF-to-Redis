@@ -4,11 +4,13 @@ the ECMWF has proven to be very reliable for long range planning. It's not for
 making "go/no go" decisions before I launch in my plane. But, when looking
 ahead to decide if I want to make plan a trip Monday-Thursday, or Tuesday-Friday, the ECMWF has been great for getting a heads up on the long range, wide area weather situation.
 
-In this case, I want temperature, dewpoint, and wind forecasts every 6 hours for the next 3 days.
+For this project, I want temperature, dewpoint, and wind forecasts every 6 hours for the next 3 days.
 The ECMWF GRIB2 files have this data and publish it multiple
-times a day.
+times a day. The files come out as one file per forecast interval every 3 hours, for example: 0h, 3h, 6h
+and so forth. For this use case, I want the 0h, 6h, 12h and so forth for
+a 3 day span.
 
-This begins with AWS Event Bridge scheduler. Every 24 hours, just after the 00Z
+It all begins with AWS Event Bridge scheduler. Every 24 hours, just after the 00Z
 model output becomes available, AWS Event Bridge launches the "multi-fetch"
 lambda. This lambda simply iterates through the forecast intervals I want.
 ECMWF GRIB files are provided in 3 hour intervals.  The "multi-fetch" lambda calls the
