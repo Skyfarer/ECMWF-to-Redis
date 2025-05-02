@@ -7,9 +7,9 @@ const REDIS_HOST = process.env.REDIS_HOST
 const redis = new Redis({
   host: REDIS_HOST,
   port: 6379,
-  tls: {
+  /*tls: {
     rejectUnauthorized: false, // Disable SSL verification
-  },
+  },*/
 });
 
 const inputFilePath = process.argv[2];

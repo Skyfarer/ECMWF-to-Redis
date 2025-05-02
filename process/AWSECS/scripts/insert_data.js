@@ -5,13 +5,13 @@ const ngeohash = require('ngeohash');
 
 const FORECAST_INTERVAL = process.env.FORECAST_INTERVAL;
 const REDIS_HOST = process.env.REDIS_HOST;
-const shortNames = ['2t','2d','10u','10v']
+const shortNames = ['2t','2d','10u','10v','tp']
 const redis = new Redis({
   host: REDIS_HOST,
   port: 6379,
-  tls: {
+  /*tls: {
     rejectUnauthorized: false, // Disable SSL verification
-  },
+  },*/
 });
 
 const fileStream = fs.createReadStream(process.argv[2]);
