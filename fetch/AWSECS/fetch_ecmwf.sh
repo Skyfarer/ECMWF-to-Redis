@@ -9,4 +9,4 @@ aws ecs run-task \
   --task-definition process-ecmwf \
   --launch-type FARGATE \
   --network-configuration '{"awsvpcConfiguration": {"subnets": ["subnet-69cb1121"], "securityGroups": ["sg-57535728"],"assignPublicIp": "ENABLED"}}' \
-  --overrides "{\"containerOverrides\": [{\"name\": \"process-ecmwf\", \"environment\": [{\"name\": \"FORECAST_INTERVAL\", \"value\": \"$forecast_interval\"}]}]}"
+  --overrides "{\"containerOverrides\": [{\"name\": \"process-ecmwf\", \"environment\": [{\"name\": \"FORECAST_INTERVAL\", \"value\": \"$forecast_interval\"}, {\"name\": \"REDIS_HOST\", \"value\": \"172.16.1.250\"}]}]}"
